@@ -8,5 +8,5 @@ def main():
             check_call(['taskkill','/PID',str(ez)])
             print()
             run('Spotify')
-        except Exception as e:print(f'Failed to kill process\n Reason: {e}\n')
+        except Exception as e:print(f'Failed to kill process\nReason: {e}\n')
 if __name__=='__main__':main()
