@@ -1,11 +1,11 @@
 class adSkipper:
     def __init__(self):
-        from threading import Thread
+        from subprocess import Popen
         from subprocess import check_output,run,check_call
         from time import sleep
-        self.i=[check_output,run,check_call,sleep,Thread]
+        self.i=[check_output,run,check_call,sleep,Popen]
     def kill(self):
-        try:self.i[2](['taskkill','/PID',str(self.i[0](['tasklist','/APPS','/FI','IMAGENAME eq Spotify.exe','/FO','CSV']).split(b',')[1::3][1].strip(b'"'), 'UTF-8')])
+        try:self.i[2](['taskkill','/PID',str(self.i[0](['tasklist','/FI','Imagename eq Spotify.exe','/FO','CSV', '/NH']).split(b',')[1].strip(b'"'), 'UTF-8')])
         except:
             x=self.i[0](['pidof','spotify']).split(b' ')
             for p in x:
@@ -13,10 +13,9 @@ class adSkipper:
                 except:pass
                 self.i[3](.1)
     def start(self):
-        try:self.i[1]('Spotify')
+        try:self.i[4](['C:\\Users\\admin\\AppData\\Roaming\\Spotify\\Spotify.exe'])
         except:
-            x=self.i[4](target=self.i[1],args=(['spotify','--no-zygote'],),daemon=True)
-            x.start()
+            x=self.i[4](['spotify','--no-zygote'])
 if __name__=='__main__':
     from time import sleep
     def n():print()
